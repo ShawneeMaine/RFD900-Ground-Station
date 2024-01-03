@@ -169,18 +169,10 @@ while True:
     while True:
         try:
             comport = input("Enter the COM Port (COM4, COM5, COM9, COM12, etc.)\n")
+            break
         except ValueError:#error checking the input
             print("\nInvalid value.\n")
-            continue
-        if comport[0:3]!="COM":
-            print("\nInvalid value.\n")
-            continue
-        if int(comport[3:len(comport)]) < 0 or int(comport[3:len(comport)]) > 20:
-            print("\nInvalid value.\n")
-            continue
-        else:
-                break
-    
+            continue    
     # Open Serial Port, if it doesn't work, reprompt user
     try:
         ser = serial.Serial( port = comport, baudrate = 57600, parity = serial.PARITY_NONE, stopbits = serial.STOPBITS_ONE, bytesize = serial.EIGHTBITS, timeout = 1 )
